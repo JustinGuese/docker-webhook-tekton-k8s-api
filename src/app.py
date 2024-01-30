@@ -11,7 +11,7 @@ with open("pipelinerun.yaml", "r") as f:
 
 repoconfigs = {
     "JustinGuese/tradingbot22-backend": {
-        "k8s-deployment": "tradingbot-backend-deployment",
+        "k8s-deployment": "tradingbot-backend",
         "k8s-namespace": "tradingbot",
     }
 }
