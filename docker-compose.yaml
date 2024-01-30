@@ -1,0 +1,8 @@
+version: "3"
+services:
+  webhookapi:
+    image: guestros/git-webhook-tekton-k8s:latest
+    platform: linux/amd64
+    build: .
+    ports:
+      - 8000:8000

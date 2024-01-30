@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/limit-rps: "5"
+  labels:
+    app: webhookapi
+  name: webhookapi
+  namespace: tekton-webhook
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: webhookapi.k8s.datafortress.cloud
+    http:
+      paths:
+      - backend:
+          service:
+            name: webhookapi
+            port:
+              number: 8000
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - webhookapi.k8s.datafortress.cloud
+    secretName: ske-executor-tls

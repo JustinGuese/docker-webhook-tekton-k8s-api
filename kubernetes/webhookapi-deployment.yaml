@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webhookapi
+  name: webhookapi
+  namespace: tekton-webhook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webhookapi
+  template:
+    metadata:
+      labels:
+        io.kompose.network/docker-webhook-tekton-k8s-api-default: "true"
+        app: webhookapi
+    spec:
+      serviceAccountName: tekton-webhook # BEGIN: Added serviceAccountName
+      containers:
+        - image: guestros/git-webhook-tekton-k8s:latest
+          name: webhookapi
+          ports:
+            - containerPort: 8000
+      restartPolicy: Always

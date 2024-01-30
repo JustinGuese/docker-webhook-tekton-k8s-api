@@ -1,0 +1,31 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: cicd-tradingbot-backend-
+spec:
+  pipelineRef:
+    name: clone-read
+  podTemplate:
+    securityContext:
+      fsGroup: 65532
+  workspaces:
+  - name: shared-data
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  - name: git-credentials
+    secret:
+      secretName: git-credentials
+  params:
+  - name: repo-url
+    value: {{REPOURL}}
+  - name: image-reference
+    value: registry.kube-system.svc.cluster.local:5000/{{IMAGE_NAME}}
+  - name: k8s-deployment
+    value: {{K8S_DEPLOYMENT}}
+  - name: k8s-namespace
+    value: {{K8S_NAMESPACE}}
