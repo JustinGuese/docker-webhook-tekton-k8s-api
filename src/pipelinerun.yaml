@@ -24,4 +24,4 @@ spec:
   - name: repo-url
     value: {{REPOURL}}
   - name: image-reference
-    value: registry.kube-system.svc.cluster.local:5000/{{IMAGE_NAME}}
+    value: registry.kube-system.svc.cluster.local:5000/{{IMAGE_NAME}}:latest
