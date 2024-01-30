@@ -1,0 +1,10 @@
+{
+    "JustinGuese/tradingbot22-backend": {
+        "k8s-deployment": "tradingbot-backend",
+        "k8s-namespace": "tradingbot"
+    },
+    "JustinGuese/tradingbot22-tradingbots-prefect": {
+        "k8s-deployment": "prefectagent-deployment",
+        "k8s-namespace": "tradingbot"
+    }
+}

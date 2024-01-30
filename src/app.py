@@ -9,12 +9,8 @@ app = FastAPI()
 with open("pipelinerun.yaml", "r") as f:
     TEMPLATE = f.read()
 
-repoconfigs = {
-    "JustinGuese/tradingbot22-backend": {
-        "k8s-deployment": "tradingbot-backend",
-        "k8s-namespace": "tradingbot",
-    }
-}
+with open("repos.json", "r") as f:
+    repoconfigs = json.load(f)
 
 
 @app.post("/")

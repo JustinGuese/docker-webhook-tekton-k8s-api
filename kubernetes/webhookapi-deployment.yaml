@@ -22,4 +22,19 @@ spec:
           name: webhookapi
           ports:
             - containerPort: 8000
+          volumeMounts: # BEGIN: Added volumeMounts
+          - name: tradingbot-configmap
+            subPath: repos.json
+            mountPath: /app/repos.json
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 5m
+              memory: 5Mi
+      volumes: # BEGIN: Added volumes
+      - name: tradingbot-configmap
+        configMap:
+          name: tradingbot-configmap
       restartPolicy: Always

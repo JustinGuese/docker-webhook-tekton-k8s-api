@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tradingbot-configmap
+  namespace: tekton-webhook
+data:
+  repos.json : |
+    {
+      "JustinGuese/tradingbot22-backend": {
+          "k8s-deployment": "tradingbot-backend",
+          "k8s-namespace": "tradingbot"
+      },
+      "JustinGuese/tradingbot22-tradingbots-prefect": {
+          "k8s-deployment": "prefectagent-deployment",
+          "k8s-namespace": "tradingbot"
+        }
+    },
+    {
+      "JustinGuese/docker-webhook-tekton-k8s-api": {
+          "k8s-deployment": "webhookapi",
+          "k8s-namespace": "tekton-webhook"
+        }
+    }
