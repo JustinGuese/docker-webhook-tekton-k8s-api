@@ -22,11 +22,11 @@ async def root(request: Request):
     # get source url of request
     sourceurl = request.headers.get("Referer")
     if sourceurl and "github.com" not in sourceurl:
-        raise HTTPException(status_code=403, detail="Not authorized for source URL " + sourceurl)
+        raise HTTPException(
+            status_code=403, detail="Not authorized for source URL " + sourceurl
+        )
 
     body = await request.body()
-    # get source url of request
-    sourceurl = 
     # will be bytes,
     body = json.loads(body.decode("utf-8"))
     repourl = body["repository"]["full_name"]
