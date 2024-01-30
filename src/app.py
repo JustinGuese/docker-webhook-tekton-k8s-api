@@ -42,8 +42,8 @@ async def root(request: Request):
     # create tmp pipelinerun
     tmp = TEMPLATE.replace("{{REPOURL}}", "git@github.com:" + repourl + ".git")
     tmp = tmp.replace("{{IMAGE_NAME}}", repourl.split("/")[-1])
-    tmp = tmp.replace("{{K8S_DEPLOYMENT}}", repoconfigs[repourl]["k8s-deployment"])
-    tmp = tmp.replace("{{K8S_NAMESPACE}}", repoconfigs[repourl]["k8s-namespace"])
+    # tmp = tmp.replace("{{K8S_DEPLOYMENT}}", repoconfigs[repourl]["k8s-deployment"])
+    # tmp = tmp.replace("{{K8S_NAMESPACE}}", repoconfigs[repourl]["k8s-namespace"])
     with open("tmp.yaml", "w") as f:
         f.write(tmp)
     call(["kubectl", "create", "-f", "tmp.yaml", "-n", "default"])

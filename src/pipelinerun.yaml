@@ -25,7 +25,3 @@ spec:
     value: {{REPOURL}}
   - name: image-reference
     value: registry.kube-system.svc.cluster.local:5000/{{IMAGE_NAME}}
-  - name: k8s-deployment
-    value: {{K8S_DEPLOYMENT}}
-  - name: k8s-namespace
-    value: {{K8S_NAMESPACE}}
