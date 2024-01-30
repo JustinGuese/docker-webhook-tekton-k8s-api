@@ -46,7 +46,7 @@ async def root(request: Request):
     tmp = tmp.replace("{{K8S_NAMESPACE}}", repoconfigs[repourl]["k8s-namespace"])
     with open("tmp.yaml", "w") as f:
         f.write(tmp)
-    call(["kubectl", "create", "-f", "tmp.yaml"])
+    call(["kubectl", "create", "-f", "tmp.yaml", "-n", "default"])
     # rollout restart
     call(
         [
