@@ -20,4 +20,10 @@ data:
           "k8s-deployment": "webhookapi",
           "k8s-namespace": "tekton-webhook"
         }
+    },
+    {
+      "JustinGuese/tradingbot-website-generator": {
+          "k8s-deployment": "prefectagent-newscreate-deployment",
+          "k8s-namespace": "tradingbot"
+        }
     }
